@@ -2,6 +2,9 @@ library(tidyverse)
 library(isotree)
 library(caret)
 
+#set seed for reproducibilty
+set.seed(123)
+
 #read in data
 reds <- read.csv('/Users/sam/Desktop/Intern Project/Reds/reds_takehome.csv')
 
@@ -188,9 +191,6 @@ reds_iso_mv_$iso_outliers <- as.factor(reds_iso_mv_$iso_outliers)
 
 #name the different levels
 levels(reds_iso_mv_$iso_outliers) <- c("Regular_Dew_Point", "High_Dew_Point")
-
-#set seed for reproducibilty
-set.seed(123)
 
 #5 fold logistic regression 
 ctrl <- trainControl(method = "cv", number = 5, savePredictions = "all", classProbs = TRUE)
